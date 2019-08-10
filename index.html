@@ -1,8 +1,187 @@
 <html>
     <head>
+        <!-- sass have to compile to css file via sass variables.scss variables.css -->
+        <!-- sass --watch variables.scss:variables.css in cmd allows for any changes to scss to automatically compile and update file when changes are made so not constantly compiling -->
+        <!-- sass nesting diff organization form so div{ p{ color: blue;} new line ul{color:red;}} says p in a div color blue, whereas css have to say div p and div ul, as file gets larger may be easier to understand sass format -->
+        <!-- sass also has inheritance, can make templates that other classes inherit, really just additional organizing layer -->
+        <!-- bootstrap  does auto styling to make life easier, e.g divides each row of page into 12 cols and auto formats as page changes e.g size adjusts automatically-->
+        <link rel="stylesheet" href="variables.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>My Webpage</title>
+        <!-- below initializes webpage size to dimensions of device-->
+        <meta name="Viewport" content="width=device-width, initial-scale=1.0">
+        <!-- no comma as in ol li means color only list elements that descend from ordered lists. comme would be do ol and li elements -->
+        <!-- ol > li means only do the li items that descend from ol but NOT the child elements of li or any of its sub elements -->
+        <!-- ol > @media indicates going to specify medium/media scenario i.e print, .screen-only refers to class screen-only notice do this with dot  -->
+
+        <style>
+            ol li {
+                color: blue;
+            }
+            ul > li {
+                color: brown;
+            }
+            input[type=text]{
+                background-color: red;
+            }
+            button{
+                width: 200px;
+                height: 50px;
+                background-color: green;
+            }
+            button:hover{
+                background-color: orange;
+            }
+            a::before{
+                content: "\21d2 Click here: ";
+                font-weight: bold;
+            }
+            p::selection{
+                color: red;
+                background-color: yellow;
+            }
+            @media print{
+                .screen-only{
+                    display: none;
+                }
+            }
+            @media (min-width:500px){
+                body{
+                    background-color:grey;
+                }
+                h1::after{
+                    content: "!!!";
+                }
+            }
+            @media (max-width:600px){
+                body{
+                    background-color:blue;
+                }
+                h1::after{
+                    content:"!";
+                }
+            }
+            .container{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .container > div{
+                background-color: springgreen;
+                padding: 20px;
+                margin: 20px;
+                width: 200px;
+                font-size: 20px;
+            }
+            .grid{
+                background-color: green;
+                display: grid;
+                padding: 20px;
+                grid-column-gap: 20px;
+                grid-row-gap: 10px;
+                grid-template-columns: 200px auto auto;
+            }
+            .grid-item{
+                background-color: white;
+                font-size: 20px;
+            }
+            .row > div{
+                background-color: teal;
+                padding: 20px;
+                border: 2px solid black;
+            }
+        </style>
     </head>
     <body>
-        <h1>Welcome to my webpage feature</h1>
+        <h2>Table of Contents</h2>
+        <p class = "screen-only">This wont appear when printing</p>
+            <ul>
+                <li><a href = #section1>Section 1</a></li>
+                <ol>
+                    <li><a href = #section2>Section 2</a></li>
+                </ol>
+                <li><a href = #section2>Section 3</a></li>
+            </ul>
+        <h1 id = "section1"> Section 1 </h1>
+        <p>
+            <a href = "hello.html">
+                Click here for other webpage!
+            </a>
+        </p>
+        <h1 id = "section2"> Section 2 </h1>
+        <p>
+            <a href = "https://google.com">
+                Click here for google!
+            </a>
+        </p>
+        <h1 id = "section3"> Section 3 </h1>
+        <div>
+            <p>
+                above link brings you to this spot on the page via id
+            </p>
+        </div>
+        <form>
+            <div>
+                <input name="username", type="text", placeholder="Name">
+                <input name="password", type = "password", placeholder="PASSWORD">
+            </div>
+            <div>
+                Favorite Color?
+                <input name="color", type="radio", value = "red"> red
+                <input name="color", type = "radio", value = "green"> green
+                <input name="color", type = "radio", vlaue ="blue"> blue
+            </div>
+            <div>
+                <input name = "country", list="countries", placeholder="Country">
+                <datalist id = "countries">
+                    <option value="Canada">
+                    <option value = "America">
+            </div>
+        </form>
+        <button> Click Me!</button>
+        <div class = "container">
+            <div>A. loooooooooooooooooooong text</div>
+            <div>B. loooooooooooong text</div>
+            <div>C. shooooort text</div>
+            <div>D. shooooooort text</div>
+            <div>E. shooooooort text</div>
+            <div>F. shooooooort text</div>
+            <div>G. shooooooort text</div>
+            <div>H. shooooooort text</div>
+            <div>I. shooooooort text</div>
+            <div>J. shooooooort text</div>
+            <div>K. shooooooort text</div>
+            <div>L. shooooooort text</div>
+        </div>
+        <div class="grid">
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5</div>
+            <div class="grid-item">6</div>
+            <div class="grid-item">7</div>
+            <div class="grid-item">8</div>
+            <div class="grid-item">9</div>
+        </div>
+        <div class = "row">
+            <!-- col-3 just breaks row cols into quarters. col-lg-3 col-sm-6 means if page is large do that but if small make column half the page and move other 2 below. basically abstracted flexbox-->
+            <div class = "col-lg-3 col-sm-6">this is a section</div>
+            <div class = "col-lg-3 col-sm-6">bootstrap divides the row into 12 total columns</div>
+            <div class = "col-lg-3 col-sm-6">col-3 class implies a quarter of the page</div>
+            <div class = "col-lg-3 col-sm-6">i.e 12/3 gives 4 sections</div>
+        </div>
+        <div class="alert alert-primary" role="alert">
+            This is an alert message. News!
+        </div>
+        <div class="alert alert-success" role="alert">
+            This is an alert message. Good news!
+        </div>
+        <div class="alert alert-danger" role="alert">
+            This is an alert message. Bad news!
+        </div>
+        <div class="success-mz">This is a success message</div>
+        <div class="warning-mz">This is a warning message</div>
+        <div class="danger-mz">This is a danger message</div>
+
     </body>
 </html>

@@ -1,0 +1,43 @@
+ul {
+  font-size: 14px;
+  color: blue;
+}
+
+ol {
+  font-size: 18px;
+  color: blue;
+}
+
+h2 {
+  color: blue;
+}
+
+div p {
+  color: blue;
+}
+div ul {
+  color: green;
+}
+
+.danger-mz, .warning-mz, .success-mz {
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: bold;
+  border: 1px solid black;
+  padding: 20px;
+  marging: 20px;
+}
+
+.success-mz {
+  background-color: green;
+}
+
+.warning-mz {
+  background-color: orange;
+}
+
+.danger-mz {
+  background-color: red;
+}
+
+/*# sourceMappingURL=variables.css.map */
